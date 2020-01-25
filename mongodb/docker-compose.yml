@@ -1,0 +1,27 @@
+version: '2'
+services:
+  flow_mongodb:
+    container_name: flow_mongodb
+    image: mongo:latest
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - flow_mongodb_data:/data/db
+    command: mongod
+    expose:
+      - '27017'
+      - '27018'
+      - '27019'
+    ports:
+      - '27017:27017'
+      - '27018:27018'
+      - '27019:27019'
+    networks:
+      inner:
+        aliases:
+          - flow_mongodb
+networks:
+  inner: {}
+volumes:
+  flow_mongodb_data: {}

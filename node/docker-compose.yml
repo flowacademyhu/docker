@@ -1,0 +1,15 @@
+version: '2'
+services:
+  flow_app:
+    container_name: flow_app
+    build:
+      context: ./app
+    volumes:
+      - './app:/usr/src/app'
+    networks:
+      inner:
+        aliases:
+          - flow_app
+networks:
+  inner: {}
+
